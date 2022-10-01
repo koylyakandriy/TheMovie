@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { API_KEY, BASE_URL } from './api/Core/constants';
 import reactLogo from './assets/react.svg';
 
 import './App.css';
 
+const { VITE_BASE_API_URL, VITE_API_KEY } = import.meta.env;
+
 const fetchData = () =>
 	axios
-		.get(`${BASE_URL}/movie/76341?api_key=${API_KEY}`)
+		.get(`${VITE_BASE_API_URL}/movie/76341?api_key=${VITE_API_KEY}`)
 		.then(({ data }) => data)
 		.catch((err) => err);
 

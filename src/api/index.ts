@@ -1,0 +1,1 @@
+export { getBrandMatrixData } from './actor';

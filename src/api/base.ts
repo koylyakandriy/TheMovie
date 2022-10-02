@@ -18,9 +18,20 @@ client.interceptors.request.use(async (config) => ({
 
 export default client;
 
-const getRequest: Request = async (url, data, config) => client.get(url, config);
-const putRequest: Request = async (url, data, config) => client.put(url, data, config);
-const postRequest: Request = async (url, data, params) => client.post(url, data, params);
-const deleteRequest: Request = async (url, data, config) => client.delete(url, config);
+const Core = () => {
+	const get: Request = async (url, data, config) => client.get(url, config);
+	const put: Request = async (url, data, config) => client.put(url, data, config);
+	const post: Request = async (url, data, params) => client.post(url, data, params);
+	const remove: Request = async (url, data, config) => client.delete(url, config);
 
-export { deleteRequest, getRequest, postRequest, putRequest };
+	return { remove, get, post, put };
+};
+
+export const request = Core();
+
+// const getRequest: Request = async (url, data, config) => client.get(url, config);
+// const putRequest: Request = async (url, data, config) => client.put(url, data, config);
+// const postRequest: Request = async (url, data, params) => client.post(url, data, params);
+// const deleteRequest: Request = async (url, data, config) => client.delete(url, config);
+
+// export { deleteRequest, getRequest, postRequest, putRequest };

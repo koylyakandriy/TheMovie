@@ -1,4 +1,5 @@
-import { getRequest } from '../base';
+// import { getRequest } from '../base';
+import { request } from '../base';
 // import { Core } from '../core';
 
 // class Movie extends Core {
@@ -12,7 +13,7 @@ type DataProps = {
 };
 
 const movie = {
-	getMovie: async (): Promise<DataProps> => getRequest('/movie/76341'),
+	getMovie: async (): Promise<DataProps> => request.get('/movie/76341'),
 };
 
 export const getMovieData = async () => {

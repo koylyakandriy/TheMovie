@@ -1,1 +1,1 @@
-export { useBrandMatrix } from './actor';
+export { useMovie } from './movie';

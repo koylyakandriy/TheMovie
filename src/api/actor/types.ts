@@ -1,1 +1,3 @@
-export type Actor = {}
+export type Actor = {
+	actor: string;
+};

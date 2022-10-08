@@ -1,28 +1,12 @@
-import { getRequest } from '../base';
-// import { Core } from '../core';
+import client from '../base';
 
-// class Movie extends Core {
-// 	getMovie: any = async () => this.get('/movie/76341')
-// }
-//
-// export const movie = new Movie();
-
-type DataProps = {
-	data: string;
-};
-
-const movie = {
-	getMovie: async (): Promise<DataProps> => getRequest('/movie/76341'),
-};
-
-export const getMovieData = async () => {
+export const getMovieData = async (id: number) => {
 	try {
-		const { data } = await movie.getMovie();
+		const { data }: any = await client.get(`/movie/${id}`);
 
 		return data;
 	} catch (error) {
-		// eslint-disable-next-line no-console
-		console.log(error);
+		console.error(error);
 
 		return null;
 	}

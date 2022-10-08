@@ -1,4 +1,7 @@
 export const QUERY_KEYS = {
 	movie: 'movie',
-	newQuery: 'newQuery'
+	latestMovies: 'latestMovies',
+	popularMovies: 'popularMovies',
+	topRatedMovies: 'topRatedMovies',
+	upcomingMovies: 'upcomingMovies'
 };

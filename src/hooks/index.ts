@@ -1,2 +1,9 @@
 export { useMovie } from './movie';
-export { useLatestMovies, usePopularMovies, useTopRatedMovies, useUpcomingMovies } from './movies';
+export {
+	useInfiniteRequestQuery,
+	useNowPlayingMovies,
+	usePopularMovies,
+	useTopRatedMovies,
+	useUpcomingMovies,
+} from './movies';
+export { default as useInfiniteScroll } from './useInfiniteScroll';

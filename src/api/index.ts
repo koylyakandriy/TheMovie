@@ -1,7 +1,8 @@
 export { getMovieData } from './movie';
 export {
-	getLatestMoviesData,
+	getNowPlayingMoviesData,
 	getPopularMoviesData,
+	getSimilarMoviesData,
 	getTopRatedMoviesData,
 	getUpcomingMoviesData,
 } from './movies';

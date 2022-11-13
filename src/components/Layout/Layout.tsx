@@ -1,11 +1,15 @@
 import React, { FC, ReactNode } from 'react';
+import styled from 'styled-components';
+
+import { Container } from '@mui/material';
+
+const LayoutContainer = styled.div`
+	margin: 20px auto;
+	// 	padding: 0 20px;
+`;
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => (
-	// const Layout = ({ children }: { children: ReactNode }) => (
-	<main>
-		<div>Sidebar</div>
-		<div>{children}</div>
-	</main>
+	<Container component={LayoutContainer}>{children}</Container>
 );
 
 export default Layout;

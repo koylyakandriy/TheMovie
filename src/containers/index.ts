@@ -1,11 +1,3 @@
-import React from 'react';
+import Cards from './Cards/Cards';
 
-const Container = () => {
-	return (
-		<div>
-			Hi
-			</div>
-	);
-};
-
-export default Container;
+export { Cards };

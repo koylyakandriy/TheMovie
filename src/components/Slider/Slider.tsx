@@ -1,15 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Slider, { Settings } from 'react-slick';
-
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import SlickSlider, { Settings } from 'react-slick';
 
 import { getImagePath } from '../../helpers/getImagePath';
+import MUIComponents from '../materialUIComponents';
+import UnknownText from '../UnknownText/UnknownText';
 
 import { SliderUIProps } from './types';
 
@@ -21,42 +16,49 @@ const initialSettings: Settings = {
 	slidesToShow: 7,
 	slidesToScroll: 2,
 	autoplay: true,
-	autoplaySpeed: 3000,
+	autoplaySpeed: 7000,
 	cssEase: 'ease-out',
 	swipeToSlide: true,
 };
 
-const SliderUI: FC<SliderUIProps> = ({ movies, settings }) => {
+const Slider: FC<SliderUIProps> = ({ movies, settings }) => {
 	const navigate = useNavigate();
 
-	const sliderSettings = {
-		...initialSettings,
-		...settings,
-	};
+	const sliderSettings = useMemo(
+		() => ({
+			...initialSettings,
+			...settings,
+		}),
+		[settings],
+	);
 
-	return (
-		<Slider {...sliderSettings}>
+	return movies?.length ? (
+		<SlickSlider {...sliderSettings}>
 			{movies?.map(({ id, title, poster_path, release_date }) => (
-				<Grid key={id}>
-					<Card sx={{ width: 150 }}>
-						<CardActionArea onClick={() => navigate(`/movie/${id}`)}>
-							<CardMedia
+				<MUIComponents.Grid key={id}>
+					<MUIComponents.Card sx={{ width: 150 }}>
+						<MUIComponents.CardActionArea onClick={() => navigate(`/movie/${id}`)}>
+							<MUIComponents.CardMedia
 								alt={`Poster - ${title}`}
 								component='img'
 								height={202}
 								image={getImagePath(poster_path)}
 							/>
-							<CardContent>
-								<Typography color='text.secondary' textAlign='center' variant='body2'>
-									{release_date}
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-					</Card>
-				</Grid>
+							<MUIComponents.CardContent>
+								<MUIComponents.Typography color='text.secondary' textAlign='center' variant='body2'>
+									<UnknownText text={release_date} />
+								</MUIComponents.Typography>
+							</MUIComponents.CardContent>
+						</MUIComponents.CardActionArea>
+					</MUIComponents.Card>
+				</MUIComponents.Grid>
 			))}
-		</Slider>
+		</SlickSlider>
+	) : (
+		<MUIComponents.Typography align='center' variant='subtitle1'>
+			Movies not found
+		</MUIComponents.Typography>
 	);
 };
 
-export default SliderUI;
+export default Slider;

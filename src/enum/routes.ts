@@ -4,4 +4,7 @@ export enum SubPath {
 
 export enum Path {
 	moviePopular = `/movies/popular`,
+	movieNowPlaying = `movies/now-playing`,
+	movieTopRated = `/movies/top-rated`,
+	movieUpcoming = `/movies/upcoming`,
 }

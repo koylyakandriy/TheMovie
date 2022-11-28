@@ -6,9 +6,7 @@ import { FooterContainer } from './Footer.styled';
 
 const Footer = () => (
 	<FooterContainer>
-		<Layout>
-			<div>Footer</div>
-		</Layout>
+		<Layout>Footer</Layout>
 	</FooterContainer>
 );
 

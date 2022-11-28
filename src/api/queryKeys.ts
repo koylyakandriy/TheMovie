@@ -1,6 +1,7 @@
 // TODO: alphabetical order
 export const QUERY_KEYS = {
 	movie: 'movie',
+	movieCredits: 'movieCredits',
 	nowPlayingMovies: 'nowPlayingMovies',
 	popularMovies: 'popularMovies',
 	topRatedMovies: 'topRatedMovies',

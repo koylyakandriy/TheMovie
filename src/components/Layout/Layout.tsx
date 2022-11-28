@@ -1,15 +1,9 @@
 import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
 
-import { Container } from '@mui/material';
-
-const LayoutContainer = styled.div`
-	margin: 20px auto;
-	// 	padding: 0 20px;
-`;
+import MUIComponents from '../materialUIComponents';
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => (
-	<Container component={LayoutContainer}>{children}</Container>
+	<MUIComponents.Container sx={{ marginY: '20px' }}>{children}</MUIComponents.Container>
 );
 
 export default Layout;

@@ -1,0 +1,8 @@
+addReviewers: true
+addAssignees: author
+
+reviewers:
+  - rostyslav-hutii_saks
+  - koylyakandriy
+
+numberOfReviewers: 1

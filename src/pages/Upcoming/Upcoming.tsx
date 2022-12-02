@@ -14,7 +14,7 @@ const Upcoming: FC = () => {
 		<>
 			<PageTitle title='Upcoming movies' />
 
-			{isLoading ? <Loader /> : <Cards data={data} />}
+			{isLoading ? <Loader /> : <Cards pages={data?.pages} />}
 		</>
 	);
 };

@@ -15,7 +15,7 @@ const NowPlaying: FC = () => {
 		<>
 			<PageTitle title='Now playing movies' />
 
-			{isLoading ? <Loader /> : <Cards data={data} />}
+			{isLoading ? <Loader /> : <Cards pages={data?.pages} />}
 		</>
 	);
 };

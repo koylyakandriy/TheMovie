@@ -14,7 +14,7 @@ const Popular: FC = () => {
 		<>
 			<PageTitle title='Popular movies' />
 
-			{isLoading ? <Loader /> : <Cards data={data} />}
+			{isLoading ? <Loader /> : <Cards pages={data?.pages} />}
 		</>
 	);
 };

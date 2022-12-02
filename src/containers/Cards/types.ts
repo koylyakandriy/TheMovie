@@ -1,3 +1,3 @@
-import { Movie } from '../../api/movie/types';
+import { MoviesData } from '../../api/movies/types';
 
-export type CardsProps = { data: Movie[] };
+export type CardsProps = { pages?: MoviesData[] };

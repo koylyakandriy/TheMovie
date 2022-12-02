@@ -14,7 +14,7 @@ const TopRated: FC = () => {
 		<>
 			<PageTitle title='Top rated movies' />
 
-			{isLoading ? <Loader /> : <Cards data={data} />}
+			{isLoading ? <Loader /> : <Cards pages={data?.pages} />}
 		</>
 	);
 };

@@ -7,4 +7,3 @@ export {
 	getUpcomingMoviesData,
 } from './movies';
 export { QUERY_KEYS } from './queryKeys';
-export type { Request } from './types';

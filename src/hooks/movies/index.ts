@@ -20,25 +20,13 @@ const requestMap: Partial<Record<QueryName, any>> = {
 	upcomingMovies: getUpcomingMoviesData,
 };
 
-type SelectProps = {
-	pages: MoviesData[];
-};
-
 export const useInfiniteRequestQuery = (queryName: QueryName) =>
-	useInfiniteQuery(
-		[QUERY_KEYS[queryName]],
-		({ pageParam = 1 }) => requestMap[queryName](pageParam),
-		{
-			getNextPageParam: (lastPage, allPages) => {
-				const maxPages = lastPage?.total_pages;
-				const nextPage = allPages.length + 1;
-
-				return nextPage <= maxPages ? nextPage : undefined;
-			},
-			// TODO: do I need to use useCallback here ?
-			select: ({ pages }: SelectProps) => pages.flatMap((page) => page.results),
-		},
-	);
+	useInfiniteQuery<MoviesData>({
+		queryKey: [QUERY_KEYS[queryName]],
+		queryFn: ({ pageParam = 1 }) => requestMap[queryName](pageParam),
+		getNextPageParam: (lastPage: MoviesData) =>
+			lastPage && lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined,
+	});
 
 export const usePopularMovies = (page: number) =>
 	useQuery([QUERY_KEYS.popularMovies], () => getPopularMoviesData(page));

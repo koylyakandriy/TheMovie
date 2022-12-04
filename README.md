@@ -4,8 +4,6 @@
 - add up button
 - search
 - filter
-- add 'see more' for card description
-- create useInfinity scrolls for every request
 
 # Additional
 

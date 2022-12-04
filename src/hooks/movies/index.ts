@@ -28,18 +28,6 @@ export const useInfiniteRequestQuery = (queryName: QueryName) =>
 			lastPage && lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined,
 	});
 
-export const usePopularMovies = (page: number) =>
-	useQuery([QUERY_KEYS.popularMovies], () => getPopularMoviesData(page));
-
-export const useNowPlayingMovies = (page: number) =>
-	useQuery([QUERY_KEYS.nowPlayingMovies], () => getNowPlayingMoviesData(page));
-
-export const useTopRatedMovies = (page: number) =>
-	useQuery([QUERY_KEYS.topRatedMovies], () => getTopRatedMoviesData(page));
-
-export const useUpcomingMovies = (page: number) =>
-	useQuery([QUERY_KEYS.upcomingMovies], () => getUpcomingMoviesData(page));
-
 export const useSimilarMovies = (movieId: number) =>
 	useQuery([QUERY_KEYS.similarMovies], () => getSimilarMoviesData(movieId));
 

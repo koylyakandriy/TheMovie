@@ -1,55 +1,57 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
+import { MoviesData } from '../../api/movies/types';
 import Loader from '../../components/Loader/Loader';
 import MUIComponents from '../../components/materialUIComponents';
 import { Path } from '../../enum/routes';
 import { getImagePath } from '../../helpers/getImagePath';
 import { getRandomInt } from '../../helpers/getRandomInt';
-import {
-	useNowPlayingMovies,
-	usePopularMovies,
-	useTopRatedMovies,
-	useUpcomingMovies,
-} from '../../hooks';
+import { useInfiniteRequestQuery } from '../../hooks';
+
+const getMovies = (pages?: MoviesData[]) => pages?.[0].results;
+
+const getRandomMovie = (pages?: MoviesData[]) => getRandomInt(getMovies(pages)?.length ?? 0);
 
 const Home = () => {
-	const { data: popularMoviesData, isLoading: isPopularMoviesLoading } = usePopularMovies();
-	const { data: nowPlayingMoviesData, isLoading: isNowPlayingLoading } = useNowPlayingMovies();
-	const { data: topRatedMoviesData, isLoading: isNowPlayingMoviesLoading } = useTopRatedMovies();
-	const { data: upcomingMoviesData, isLoading: isUpcomingMoviesLoading } = useUpcomingMovies();
-
-	// const result = useAllMovies();
+	const { data: popularMoviesData, isLoading: isPopularMoviesLoading } =
+		useInfiniteRequestQuery('popularMovies');
+	const { data: nowPlayingMoviesData, isLoading: isNowPlayingLoading } =
+		useInfiniteRequestQuery('nowPlayingMovies');
+	const { data: topRatedMoviesData, isLoading: isTopRatedMoviesLoading } =
+		useInfiniteRequestQuery('topRatedMovies');
+	const { data: upcomingMoviesData, isLoading: isUpcomingMoviesLoading } =
+		useInfiniteRequestQuery('upcomingMovies');
 
 	const isLoading =
 		isPopularMoviesLoading ||
 		isNowPlayingLoading ||
-		isNowPlayingMoviesLoading ||
+		isTopRatedMoviesLoading ||
 		isUpcomingMoviesLoading;
 
 	const movies = [
 		{
 			link: Path.moviePopular,
-			...popularMoviesData?.results[getRandomInt(popularMoviesData?.results.length)],
+			...getMovies(popularMoviesData?.pages)?.[getRandomMovie(popularMoviesData?.pages)],
 		},
 		{
 			link: Path.movieNowPlaying,
-			...nowPlayingMoviesData?.results[getRandomInt(nowPlayingMoviesData?.results.length)],
+			...getMovies(nowPlayingMoviesData?.pages)?.[getRandomMovie(nowPlayingMoviesData?.pages)],
 		},
 		{
 			link: Path.movieTopRated,
-			...topRatedMoviesData?.results[getRandomInt(topRatedMoviesData?.results.length)],
+			...getMovies(topRatedMoviesData?.pages)?.[getRandomMovie(topRatedMoviesData?.pages)],
 		},
 		{
 			link: Path.movieUpcoming,
-			...upcomingMoviesData?.results[getRandomInt(upcomingMoviesData?.results.length)],
+			...getMovies(upcomingMoviesData?.pages)?.[getRandomMovie(upcomingMoviesData?.pages)],
 		},
 	];
 
 	return isLoading ? (
 		<Loader />
 	) : (
-		<MUIComponents.Grid alignItems='center' spacing={2} sx={{ marginTop: '1rem' }} container>
+		<MUIComponents.Grid alignItems='center' spacing={2} container>
 			{movies.map(({ id, title, poster_path, link }) => (
 				<MUIComponents.Grid key={id} lg={6} md={6} xs={12} item>
 					<MUIComponents.Card>
@@ -57,7 +59,6 @@ const Home = () => {
 							<MUIComponents.CardMedia
 								alt={`Poster - ${title}`}
 								component='img'
-								height={437}
 								image={getImagePath(poster_path)}
 							/>
 						</MUIComponents.CardActionArea>

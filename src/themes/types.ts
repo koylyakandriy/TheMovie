@@ -4,12 +4,12 @@ export interface ThemeColor {
 	dark?: string;
 }
 
-export interface Pallete {
+export interface Pallet {
 	primary: ThemeColor;
 	secondary: ThemeColor;
 	waring: ThemeColor;
 }
 
 export interface Theme {
-	colors: Pallete;
+	colors: Pallet;
 }

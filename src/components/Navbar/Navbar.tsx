@@ -1,38 +1,24 @@
 import React, { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
 
 import Logo from '../Logo/Logo';
+import MUIComponents from '../materialUIComponents';
 
 import { navLinks } from './constants';
+import { NavbarContainer } from './Navbar.styled';
 
-export const NavbarContainer = styled.nav`
-	display: flex;
-	height: 40px;
-`;
-
-export const NavLinks = styled.ul`
-	align-items: center;
-	display: flex;
-	margin-left: auto;
-`;
-
-export const NavLinkItem = styled.li`
-	margin-left: 14px;
-`;
-
-const Navbar = () => (
+const Navbar: FC = () => (
 	<NavbarContainer>
 		<Link to='/'>
 			<Logo />
 		</Link>
-		<NavLinks>
+		<MUIComponents.Box marginLeft='auto'>
 			{navLinks.map(({ path, name }) => (
-				<NavLinkItem key={path}>
+				<MUIComponents.Button key={path}>
 					<NavLink to={path}>{name}</NavLink>
-				</NavLinkItem>
+				</MUIComponents.Button>
 			))}
-		</NavLinks>
+		</MUIComponents.Box>
 	</NavbarContainer>
 );
 

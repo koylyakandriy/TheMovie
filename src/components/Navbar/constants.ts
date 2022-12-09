@@ -6,15 +6,15 @@ export const navLinks: { path: Path; name: string }[] = [
 		name: 'Popular',
 	},
 	{
-		path: 'movies/now-playing',
+		path: Path.movieNowPlaying,
 		name: 'Now playing',
 	},
 	{
-		path: 'movies/top-rated',
+		path: Path.movieTopRated,
 		name: 'Top Rated',
 	},
 	{
-		path: 'movies/upcoming',
+		path: Path.movieUpcoming,
 		name: 'Upcoming',
 	},
 ];

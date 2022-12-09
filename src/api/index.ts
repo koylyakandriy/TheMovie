@@ -1,3 +1,4 @@
+export { getMovieCredits } from './credits';
 export { getMovieData } from './movie';
 export {
 	getNowPlayingMoviesData,

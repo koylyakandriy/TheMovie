@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import { colors } from '@mui/material';
+
 import Logo from '../Logo/Logo';
 import MUIComponents from '../materialUIComponents';
 
@@ -15,7 +17,14 @@ const Navbar: FC = () => (
 		<MUIComponents.Box marginLeft='auto'>
 			{navLinks.map(({ path, name }) => (
 				<MUIComponents.Button key={path}>
-					<NavLink to={path}>{name}</NavLink>
+					<NavLink
+						style={({ isActive }) =>
+							isActive ? { color: colors.cyan['700'] } : { color: colors.common.black }
+						}
+						to={path}
+					>
+						{name}
+					</NavLink>
 				</MUIComponents.Button>
 			))}
 		</MUIComponents.Box>

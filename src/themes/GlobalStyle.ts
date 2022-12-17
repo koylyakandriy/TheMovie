@@ -4,8 +4,6 @@ import { normalize } from 'styled-normalize';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// import { Theme } from './types';
-
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
   :root {
@@ -47,21 +45,4 @@ export const GlobalStyle = createGlobalStyle`
   .slick-initialized {
     margin: 30px auto 50px;
   }
-  
-  
-  
 `;
-
-// export const CustomTheme: Theme = {
-// 	colors: {
-// 		primary: {
-// 			main: red,
-// 		},
-// 		secondary: {
-// 			main: blue,
-// 		},
-// 		waring: {
-// 			main: green,
-// 		},
-// 	},
-// };

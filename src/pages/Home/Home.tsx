@@ -10,7 +10,6 @@ import { getRandomInt } from '../../helpers/getRandomInt';
 import { useInfiniteRequestQuery } from '../../hooks';
 
 const getMovies = (pages?: MoviesData[]) => pages?.[0].results;
-
 const getRandomMovie = (pages?: MoviesData[]) => getRandomInt(getMovies(pages)?.length ?? 0);
 
 const Home = () => {
@@ -54,7 +53,13 @@ const Home = () => {
 		<MUIComponents.Grid alignItems='center' spacing={2} container>
 			{movies.map(({ id, title, poster_path, link }) => (
 				<MUIComponents.Grid key={id} lg={6} md={6} xs={12} item>
-					<MUIComponents.Card>
+					<MUIComponents.Card
+						sx={{
+							'&:hover': {
+								opacity: 0.9,
+							},
+						}}
+					>
 						<MUIComponents.CardActionArea component={RouterLink} to={link}>
 							<MUIComponents.CardMedia
 								alt={`Poster - ${title}`}

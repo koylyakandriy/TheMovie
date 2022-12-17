@@ -54,13 +54,17 @@ const Movie: FC = () => {
 				<MUIComponents.Grid sm={12} item>
 					<MUIComponents.Typography mb={4} mt={2} variant='h5'>
 						Acting&apos;s
-						<MUIComponents.AvatarGroup max={20} total={moviesCreditsData?.cast.length}>
+						<MUIComponents.AvatarGroup
+							max={12}
+							sx={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
+							total={moviesCreditsData?.cast.length}
+						>
 							{moviesCreditsData?.cast.map((acting) => (
 								<MUIComponents.Avatar
 									alt={acting.name}
 									key={acting.id}
 									src={getImagePath(acting.profile_path, 300)}
-									sx={{ width: 56, height: 56 }}
+									sx={{ width: 100, height: 100 }}
 								/>
 							))}
 						</MUIComponents.AvatarGroup>
@@ -69,10 +73,10 @@ const Movie: FC = () => {
 			</MUIComponents.Grid>
 
 			<MUIComponents.Box>
-				<MUIComponents.Typography variant='h6'>Similar Movies</MUIComponents.Typography>
+				<MUIComponents.Typography variant='h5'>Similar Movies</MUIComponents.Typography>
 				<Slider movies={similarMoviesData?.results} />
 
-				<MUIComponents.Typography variant='h6'>Recommendation Movies</MUIComponents.Typography>
+				<MUIComponents.Typography variant='h5'>Recommendation Movies</MUIComponents.Typography>
 				<Slider movies={recommendationsMoviesData?.results} settings={{ rtl: true }} />
 			</MUIComponents.Box>
 		</>

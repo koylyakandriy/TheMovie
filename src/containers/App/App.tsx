@@ -12,16 +12,11 @@ import TopRated from '../../pages/TopRated/TopRated';
 import Upcoming from '../../pages/Upcoming/Upcoming';
 
 import { MainContent } from './App.styled';
-// import { Pallet } from './themes/types';
 
 function App() {
-	// const customColor: keyof Pallete = true ? 'primary' : 'secondary';
-
 	return (
 		<>
 			<Header />
-			{/* <div style={{ background: CustomTheme.colors[customColor].main }} /> */}
-			{/* <Sidebar>Sidebar</Sidebar> */}
 
 			<Layout>
 				<MainContent>
